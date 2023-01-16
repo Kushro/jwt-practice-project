@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  api:
+    build:
+      context: ./my-api
+      dockerfile: ./docker/Dockerfile
+    container_name: api_backend
+    restart: always
+    ports:
+      - target: 3001
+        published: 3001
+    volumes:
+      - ./my-api:/app
+      - /app/node_modules
+  client:
+    build:
+      context: ./front-react
+      dockerfile: ./docker/Dockerfile
+    container_name: jwt_project_frontend
+    restart: always
+    ports:
+      - target: 3000
+        published: 3000
+    volumes:
+      - ./front-react:/app
+      - /app/node_modules
+      - /app/.next
+    stdin_open: true
+    tty: true

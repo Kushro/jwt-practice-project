@@ -8,6 +8,9 @@ const nextConfig = {
         hostname: 'statics.turecibo.com'
       }
     ]
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
   }
 }
 
